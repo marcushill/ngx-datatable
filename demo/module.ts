@@ -13,6 +13,7 @@ import { HorzVertScrolling } from './basic/scrolling.component';
 import { MultipleTablesComponent } from './basic/multiple.component';
 import { FullScreenComponent } from './basic/fullscreen.component';
 import { RowDetailsComponent } from './basic/row-detail.component';
+import { RowGroupingDetailsComponent } from './basic/row-groupings-details.component';
 import { ResponsiveComponent } from './basic/responsive.component';
 import { FilterBarComponent } from './basic/filter.component';
 import { TabsDemoComponent } from './basic/tabs.component';
@@ -125,8 +126,17 @@ import { SummaryRowInlineHtmlComponent } from './summary/summary-row-inline-html
     SummaryRowCustomTemplateComponent,
     SummaryRowServerPagingComponent,
     SummaryRowInlineHtmlComponent,
+    RowGroupingDetailsComponent,
   ],
-  imports: [BrowserModule, NgxDatatableModule],
+  imports: [BrowserModule,
+    NgxDatatableModule.forRoot({
+      messages: {
+        emptyMessage: 'No data to display',   // Message to show when array is presented, but contains no values
+        totalMessage: 'total',                // Footer total message
+        selectedMessage: 'selected'           // Footer selected message
+      }
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
